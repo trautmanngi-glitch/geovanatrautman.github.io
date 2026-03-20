@@ -1,0 +1,1080 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dra. Geovana Trautman - Sistema Completo</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Nunito+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #B8967D;
+            --primary-dark: #9A7A61;
+            --secondary: #E8DDD4;
+            --accent: #D4A574;
+            --text-dark: #2C2C2C;
+            --text-light: #666666;
+            --background: #FAF8F6;
+            --white: #FFFFFF;
+            --success: #6B8E6F;
+            --error: #C66B6B;
+        }
+
+        body {
+            font-family: 'Nunito Sans', sans-serif;
+            color: var(--text-dark);
+            background: var(--background);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 400;
+            letter-spacing: 0.02em;
+        }
+
+        /* Loading */
+        .loading {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-size: 1.2rem;
+            color: var(--gold);
+        }
+
+        /* Header */
+        .header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(250, 248, 246, 0.98);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1.5rem 0;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.05);
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            font-weight: 500;
+            color: var(--primary-dark);
+            letter-spacing: 0.05em;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo img {
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-btn {
+            background: none;
+            border: none;
+            color: var(--text-dark);
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: color 0.3s;
+            font-weight: 500;
+            letter-spacing: 0.02em;
+            text-decoration: none;
+        }
+
+        .nav-btn:hover {
+            color: var(--primary);
+        }
+
+        .admin-btn {
+            background: var(--primary);
+            color: var(--white);
+            padding: 0.6rem 1.5rem;
+            border-radius: 25px;
+        }
+
+        .admin-btn:hover {
+            background: var(--primary-dark);
+        }
+
+        /* Main Content */
+        .main-content {
+            padding-top: 90px;
+            min-height: 100vh;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 85vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--secondary) 0%, var(--background) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.2;
+            z-index: 0;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            max-width: 900px;
+            padding: 0 2rem;
+        }
+
+        .hero h1 {
+            font-size: 4.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary-dark);
+        }
+
+        .hero .subtitle {
+            font-size: 1.4rem;
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+
+        .hero .tagline {
+            font-size: 1.2rem;
+            color: var(--text-dark);
+            margin-bottom: 2.5rem;
+            line-height: 1.6;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1.2rem 3.5rem;
+            background: var(--primary);
+            color: var(--white);
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            transition: all 0.3s;
+            box-shadow: 0 10px 30px rgba(184, 150, 125, 0.3);
+        }
+
+        .cta-button:hover {
+            background: var(--primary-dark);
+            transform: translateY(-3px);
+        }
+
+        /* Section */
+        section {
+            padding: 6rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: var(--primary-dark);
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-light);
+            font-size: 1.1rem;
+            margin-bottom: 4rem;
+        }
+
+        /* About */
+        .about {
+            background: var(--white);
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-image {
+            height: 500px;
+            background-size: cover;
+            background-position: center;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+        }
+
+        .about-text h3 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary-dark);
+            line-height: 1.4;
+        }
+
+        .about-text p {
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        /* Gallery */
+        .gallery {
+            background: var(--background);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .gallery-item {
+            height: 350px;
+            background-size: cover;
+            background-position: center;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-10px);
+        }
+
+        /* Services */
+        .services {
+            background: var(--white);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: var(--background);
+            padding: 2.5rem 2rem;
+            border-radius: 15px;
+            text-align: center;
+            transition: transform 0.3s;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .service-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .service-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.8rem;
+            color: var(--primary-dark);
+        }
+
+        .service-card p {
+            color: var(--text-light);
+            line-height: 1.7;
+            font-size: 0.95rem;
+        }
+
+        /* Contact */
+        .contact {
+            background: var(--white);
+            text-align: center;
+        }
+
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 2.5rem;
+            margin: 3rem 0;
+        }
+
+        .contact-item {
+            padding: 1.5rem;
+        }
+
+        .contact-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .contact-item h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary-dark);
+        }
+
+        .contact-item p {
+            color: var(--text-light);
+        }
+
+        .contact-item a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--text-dark);
+            color: var(--white);
+            text-align: center;
+            padding: 2rem;
+        }
+
+        /* ADMIN PANEL */
+        .admin-panel {
+            padding: 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .admin-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 2px solid var(--secondary);
+        }
+
+        .admin-header h2 {
+            font-size: 3rem;
+            color: var(--primary-dark);
+        }
+
+        .btn {
+            padding: 0.8rem 2rem;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: var(--white);
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-dark);
+        }
+
+        .btn-secondary {
+            background: var(--text-dark);
+            color: var(--white);
+        }
+
+        .admin-tabs {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            border-bottom: 2px solid var(--secondary);
+        }
+
+        .tab-btn {
+            padding: 1rem 2rem;
+            background: none;
+            border: none;
+            border-bottom: 3px solid transparent;
+            cursor: pointer;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-light);
+            transition: all 0.3s;
+            margin-bottom: -2px;
+        }
+
+        .tab-btn:hover {
+            color: var(--primary);
+        }
+
+        .tab-btn.active {
+            color: var(--primary);
+            border-bottom-color: var(--primary);
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        /* Image Manager */
+        .image-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .image-slot {
+            background: var(--white);
+            border-radius: 15px;
+            padding: 1.5rem;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+        }
+
+        .image-slot-label {
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--primary-dark);
+            font-size: 1.1rem;
+        }
+
+        .image-preview {
+            width: 100%;
+            height: 200px;
+            background: var(--background);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
+            overflow: hidden;
+        }
+
+        .image-preview img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: cover;
+        }
+
+        .upload-btn {
+            width: 100%;
+            padding: 1rem;
+            background: var(--primary);
+            color: var(--white);
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .upload-btn:hover {
+            background: var(--primary-dark);
+        }
+
+        input[type="file"] {
+            display: none;
+        }
+
+        /* Content Editor */
+        .editor-section {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 15px;
+            margin-bottom: 2rem;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+        }
+
+        .editor-section h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary-dark);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 1px solid var(--secondary);
+            border-radius: 8px;
+            font-family: 'Nunito Sans', sans-serif;
+            font-size: 1rem;
+        }
+
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .save-btn {
+            background: var(--success);
+            color: var(--white);
+            padding: 1rem 3rem;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+        }
+
+        .save-btn:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+        }
+
+        .alert {
+            padding: 1rem 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+
+        .alert-success {
+            background: var(--success);
+            color: var(--white);
+        }
+
+        /* Login */
+        .login-container {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        .login-box {
+            background: var(--white);
+            padding: 4rem;
+            max-width: 450px;
+            width: 100%;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+        }
+
+        .login-box h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            color: var(--primary-dark);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+            .nav-menu {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="app"></div>
+
+    <script>
+        // SISTEMA DE ARMAZENAMENTO
+        const Storage = {
+            async get(key) {
+                try {
+                    const result = await window.storage.get(key, false);
+                    return result ? JSON.parse(result.value) : null;
+                } catch {
+                    return null;
+                }
+            },
+            async set(key, value) {
+                try {
+                    await window.storage.set(key, JSON.stringify(value), false);
+                    return true;
+                } catch {
+                    return false;
+                }
+            }
+        };
+
+        // DADOS PADRÃO
+        const defaultData = {
+            images: {
+                logo: '',
+                hero: '',
+                about: '',
+                gallery1: '',
+                gallery2: '',
+                gallery3: '',
+                gallery4: '',
+                gallery5: '',
+                gallery6: ''
+            },
+            content: {
+                heroTitle: 'Dra. Geovana Trautman',
+                heroSubtitle: 'Estética Avançada',
+                heroTagline: 'Realçando sua beleza com naturalidade, cuidado e profissionalismo.',
+                aboutTitle: 'Atendimento personalizado, com foco em resultados naturais e na valorização da sua autoestima',
+                aboutText1: 'Bem-vindo à clínica Dra. Geovana Trautman, onde a ciência encontra a beleza natural.',
+                aboutText2: 'Minha missão é realçar sua beleza natural através de técnicas avançadas.',
+                aboutText3: 'Acredito que a verdadeira beleza é aquela que reflete sua essência.',
+                phone: '(46) 98818-2475',
+                instagram: '@geovana.trautman',
+                address: 'Rua Major Estevan do Nascimento, 168 - Centro, Guarapuava, PR',
+                hours: 'Seg a Sex: 13:30 às 18:00 | Sábado: 08:30 às 12:00'
+            }
+        };
+
+        // APP STATE
+        let currentView = 'public';
+        let isLoggedIn = false;
+        let siteData = { ...defaultData };
+
+        // CARREGAR DADOS
+        async function loadData() {
+            const savedImages = await Storage.get('site-images');
+            const savedContent = await Storage.get('site-content');
+            
+            if (savedImages) siteData.images = { ...siteData.images, ...savedImages };
+            if (savedContent) siteData.content = { ...siteData.content, ...savedContent };
+        }
+
+        // SALVAR DADOS
+        async function saveData() {
+            await Storage.set('site-images', siteData.images);
+            await Storage.set('site-content', siteData.content);
+        }
+
+        // UPLOAD DE IMAGEM
+        function handleImageUpload(key, file) {
+            const reader = new FileReader();
+            reader.onload = async (e) => {
+                siteData.images[key] = e.target.result;
+                await saveData();
+                render();
+            };
+            reader.readAsDataURL(file);
+        }
+
+        // RENDER
+        function render() {
+            const app = document.getElementById('app');
+            
+            if (currentView === 'public') {
+                app.innerHTML = renderPublicSite();
+                attachPublicListeners();
+            } else if (currentView === 'admin' && !isLoggedIn) {
+                app.innerHTML = renderLogin();
+                attachLoginListeners();
+            } else if (currentView === 'admin' && isLoggedIn) {
+                app.innerHTML = renderAdminPanel();
+                attachAdminListeners();
+            }
+        }
+
+        // RENDER SITE PÚBLICO
+        function renderPublicSite() {
+            return `
+                <header class="header">
+                    <div class="header-content">
+                        <div class="logo">
+                            ${siteData.images.logo ? `<img src="${siteData.images.logo}" alt="Logo">` : ''}
+                            <span>Dra. Geovana Trautman</span>
+                        </div>
+                        <nav class="nav-menu">
+                            <a href="#inicio" class="nav-btn">Início</a>
+                            <a href="#sobre" class="nav-btn">Sobre</a>
+                            <a href="#galeria" class="nav-btn">Galeria</a>
+                            <a href="#servicos" class="nav-btn">Procedimentos</a>
+                            <a href="#contato" class="nav-btn">Contato</a>
+                            <button class="nav-btn admin-btn" onclick="goToAdmin()">Admin</button>
+                        </nav>
+                    </div>
+                </header>
+
+                <main class="main-content">
+                    <section id="inicio" class="hero">
+                        ${siteData.images.hero ? `<img src="${siteData.images.hero}" class="hero-bg" alt="Background">` : ''}
+                        <div class="hero-content">
+                            <h1>${siteData.content.heroTitle}</h1>
+                            <p class="subtitle">${siteData.content.heroSubtitle}</p>
+                            <p class="tagline">${siteData.content.heroTagline}</p>
+                            <a href="https://wa.me/5546988182475?text=Olá,%20quero%20agendar%20um%20procedimento" target="_blank" class="cta-button">
+                                💬 Agendar pelo WhatsApp
+                            </a>
+                        </div>
+                    </section>
+
+                    <section id="sobre" class="about">
+                        <div class="about-content">
+                            <div class="about-text">
+                                <h3>${siteData.content.aboutTitle}</h3>
+                                <p>${siteData.content.aboutText1}</p>
+                                <p>${siteData.content.aboutText2}</p>
+                                <p>${siteData.content.aboutText3}</p>
+                            </div>
+                            <div class="about-image" style="background-image: url('${siteData.images.about}');"></div>
+                        </div>
+                    </section>
+
+                    <section id="galeria" class="gallery">
+                        <h2 class="section-title">Galeria</h2>
+                        <p class="section-subtitle">Conheça nosso espaço e procedimentos</p>
+                        <div class="gallery-grid">
+                            ${siteData.images.gallery1 ? `<div class="gallery-item" style="background-image: url('${siteData.images.gallery1}');"></div>` : ''}
+                            ${siteData.images.gallery2 ? `<div class="gallery-item" style="background-image: url('${siteData.images.gallery2}');"></div>` : ''}
+                            ${siteData.images.gallery3 ? `<div class="gallery-item" style="background-image: url('${siteData.images.gallery3}');"></div>` : ''}
+                            ${siteData.images.gallery4 ? `<div class="gallery-item" style="background-image: url('${siteData.images.gallery4}');"></div>` : ''}
+                            ${siteData.images.gallery5 ? `<div class="gallery-item" style="background-image: url('${siteData.images.gallery5}');"></div>` : ''}
+                            ${siteData.images.gallery6 ? `<div class="gallery-item" style="background-image: url('${siteData.images.gallery6}');"></div>` : ''}
+                        </div>
+                    </section>
+
+                    <section id="servicos" class="services">
+                        <h2 class="section-title">Procedimentos</h2>
+                        <p class="section-subtitle">Tratamentos especializados para realçar sua beleza natural</p>
+                        <div class="services-grid">
+                            <div class="service-card">
+                                <div class="service-icon">👁️</div>
+                                <h3>Extensão de Cílios</h3>
+                                <p>Alongamento e volume para um olhar marcante e natural.</p>
+                            </div>
+                            <div class="service-card">
+                                <div class="service-icon">✨</div>
+                                <h3>Design de Sobrancelha + Tintura</h3>
+                                <p>Design personalizado com tintura para sobrancelhas perfeitas.</p>
+                            </div>
+                            <div class="service-card">
+                                <div class="service-icon">💫</div>
+                                <h3>Lash Lifting</h3>
+                                <p>Curvatura natural dos cílios com resultados duradouros.</p>
+                            </div>
+                            <div class="service-card">
+                                <div class="service-icon">🌟</div>
+                                <h3>Brow Lamination</h3>
+                                <p>Sobrancelhas modeladas com efeito laminado moderno.</p>
+                            </div>
+                            <div class="service-card">
+                                <div class="service-icon">🌿</div>
+                                <h3>Limpeza de Pele</h3>
+                                <p>Tratamento profundo deixando a pele limpa e radiante.</p>
+                            </div>
+                            <div class="service-card">
+                                <div class="service-icon">💧</div>
+                                <h3>Peeling Mandélico e Jessner</h3>
+                                <p>Renovação celular para uniformizar tom e textura.</p>
+                            </div>
+                            <div class="service-card">
+                                <div class="service-icon">💉</div>
+                                <h3>Intradermoterapia</h3>
+                                <p>Aplicação de ativos direto na pele.</p>
+                            </div>
+                            <div class="service-card">
+                                <div class="service-icon">📋</div>
+                                <h3>Protocolos Personalizados</h3>
+                                <p>Tratamentos exclusivos para sua pele.</p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section id="contato" class="contact">
+                        <h2 class="section-title">Entre em Contato</h2>
+                        <p class="section-subtitle">Estou à disposição para agendar sua consulta</p>
+                        <div class="contact-info">
+                            <div class="contact-item">
+                                <div class="contact-icon">📍</div>
+                                <h3>Endereço</h3>
+                                <p>${siteData.content.address}</p>
+                            </div>
+                            <div class="contact-item">
+                                <div class="contact-icon">📱</div>
+                                <h3>WhatsApp</h3>
+                                <p><a href="https://wa.me/5546988182475?text=Olá,%20quero%20agendar%20um%20procedimento" target="_blank">${siteData.content.phone}</a></p>
+                            </div>
+                            <div class="contact-item">
+                                <div class="contact-icon">📷</div>
+                                <h3>Instagram</h3>
+                                <p><a href="https://instagram.com/geovana.trautman" target="_blank">${siteData.content.instagram}</a></p>
+                            </div>
+                            <div class="contact-item">
+                                <div class="contact-icon">⏰</div>
+                                <h3>Horário</h3>
+                                <p>${siteData.content.hours}</p>
+                            </div>
+                        </div>
+                        <a href="https://wa.me/5546988182475?text=Olá,%20quero%20agendar%20um%20procedimento" target="_blank" class="cta-button">
+                            💬 Agendar Agora pelo WhatsApp
+                        </a>
+                    </section>
+                </main>
+
+                <footer>
+                    <p>&copy; 2024 Dra. Geovana Trautman - Estética Avançada. Todos os direitos reservados.</p>
+                </footer>
+            `;
+        }
+
+        // RENDER LOGIN
+        function renderLogin() {
+            return `
+                <div class="login-container">
+                    <div class="login-box">
+                        <h2>Painel Admin</h2>
+                        <form id="loginForm">
+                            <div class="form-group">
+                                <label>Senha</label>
+                                <input type="password" id="password" placeholder="Digite a senha" required>
+                            </div>
+                            <button type="submit" class="btn btn-primary" style="width: 100%; margin-bottom: 1rem;">Entrar</button>
+                            <button type="button" class="btn btn-secondary" style="width: 100%;" onclick="backToSite()">Voltar ao Site</button>
+                        </form>
+                    </div>
+                </div>
+            `;
+        }
+
+        // RENDER ADMIN PANEL
+        function renderAdminPanel() {
+            return `
+                <div class="main-content">
+                    <div class="admin-panel">
+                        <div class="admin-header">
+                            <h2>Painel Administrativo</h2>
+                            <button class="btn btn-secondary" onclick="logout()">Sair</button>
+                        </div>
+
+                        <div class="admin-tabs">
+                            <button class="tab-btn active" onclick="switchTab('images')">Gerenciar Imagens</button>
+                            <button class="tab-btn" onclick="switchTab('content')">Editar Conteúdo</button>
+                            <button class="tab-btn" onclick="switchTab('preview')">Visualizar Site</button>
+                        </div>
+
+                        <div id="tab-images" class="tab-content active">
+                            <div class="image-grid">
+                                ${renderImageSlot('logo', 'Logo do Site')}
+                                ${renderImageSlot('hero', 'Imagem de Fundo (Hero)')}
+                                ${renderImageSlot('about', 'Foto Sobre Nós')}
+                                ${renderImageSlot('gallery1', 'Galeria - Foto 1')}
+                                ${renderImageSlot('gallery2', 'Galeria - Foto 2')}
+                                ${renderImageSlot('gallery3', 'Galeria - Foto 3')}
+                                ${renderImageSlot('gallery4', 'Galeria - Foto 4')}
+                                ${renderImageSlot('gallery5', 'Galeria - Foto 5')}
+                                ${renderImageSlot('gallery6', 'Galeria - Foto 6')}
+                            </div>
+                        </div>
+
+                        <div id="tab-content" class="tab-content">
+                            ${renderContentEditor()}
+                        </div>
+
+                        <div id="tab-preview" class="tab-content">
+                            <div style="text-align: center; padding: 3rem;">
+                                <h3 style="margin-bottom: 2rem;">Visualizar Site Público</h3>
+                                <button class="btn btn-primary" onclick="backToSite()">Ver Site Público</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        function renderImageSlot(key, label) {
+            return `
+                <div class="image-slot">
+                    <div class="image-slot-label">${label}</div>
+                    <div class="image-preview">
+                        ${siteData.images[key] ? `<img src="${siteData.images[key]}" alt="${label}">` : '<span style="color: var(--text-light);">Sem imagem</span>'}
+                    </div>
+                    <input type="file" id="file-${key}" accept="image/*" onchange="uploadImage('${key}', this.files[0])">
+                    <label for="file-${key}" class="upload-btn">📤 ${siteData.images[key] ? 'Alterar' : 'Fazer Upload'}</label>
+                </div>
+            `;
+        }
+
+        function renderContentEditor() {
+            return `
+                <div id="saveAlert"></div>
+                <div class="editor-section">
+                    <h3>Seção Hero (Topo)</h3>
+                    <div class="form-group">
+                        <label>Título Principal</label>
+                        <input type="text" id="heroTitle" value="${siteData.content.heroTitle}">
+                    </div>
+                    <div class="form-group">
+                        <label>Subtítulo</label>
+                        <input type="text" id="heroSubtitle" value="${siteData.content.heroSubtitle}">
+                    </div>
+                    <div class="form-group">
+                        <label>Frase de Destaque</label>
+                        <textarea id="heroTagline">${siteData.content.heroTagline}</textarea>
+                    </div>
+                </div>
+
+                <div class="editor-section">
+                    <h3>Seção Sobre</h3>
+                    <div class="form-group">
+                        <label>Título</label>
+                        <textarea id="aboutTitle">${siteData.content.aboutTitle}</textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Parágrafo 1</label>
+                        <textarea id="aboutText1">${siteData.content.aboutText1}</textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Parágrafo 2</label>
+                        <textarea id="aboutText2">${siteData.content.aboutText2}</textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Parágrafo 3</label>
+                        <textarea id="aboutText3">${siteData.content.aboutText3}</textarea>
+                    </div>
+                </div>
+
+                <div class="editor-section">
+                    <h3>Informações de Contato</h3>
+                    <div class="form-group">
+                        <label>Telefone</label>
+                        <input type="text" id="phone" value="${siteData.content.phone}">
+                    </div>
+                    <div class="form-group">
+                        <label>Instagram</label>
+                        <input type="text" id="instagram" value="${siteData.content.instagram}">
+                    </div>
+                    <div class="form-group">
+                        <label>Endereço</label>
+                        <textarea id="address">${siteData.content.address}</textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Horários de Atendimento</label>
+                        <input type="text" id="hours" value="${siteData.content.hours}">
+                    </div>
+                </div>
+
+                <button class="save-btn" onclick="saveContent()">💾 Salvar Alterações</button>
+            `;
+        }
+
+        // FUNÇÕES GLOBAIS
+        window.goToAdmin = () => {
+            currentView = 'admin';
+            render();
+        };
+
+        window.backToSite = () => {
+            currentView = 'public';
+            isLoggedIn = false;
+            render();
+        };
+
+        window.logout = () => {
+            isLoggedIn = false;
+            render();
+        };
+
+        window.uploadImage = (key, file) => {
+            if (file) handleImageUpload(key, file);
+        };
+
+        window.switchTab = (tab) => {
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+            event.target.classList.add('active');
+            document.getElementById(`tab-${tab}`).classList.add('active');
+        };
+
+        window.saveContent = async () => {
+            siteData.content.heroTitle = document.getElementById('heroTitle').value;
+            siteData.content.heroSubtitle = document.getElementById('heroSubtitle').value;
+            siteData.content.heroTagline = document.getElementById('heroTagline').value;
+            siteData.content.aboutTitle = document.getElementById('aboutTitle').value;
+            siteData.content.aboutText1 = document.getElementById('aboutText1').value;
+            siteData.content.aboutText2 = document.getElementById('aboutText2').value;
+            siteData.content.aboutText3 = document.getElementById('aboutText3').value;
+            siteData.content.phone = document.getElementById('phone').value;
+            siteData.content.instagram = document.getElementById('instagram').value;
+            siteData.content.address = document.getElementById('address').value;
+            siteData.content.hours = document.getElementById('hours').value;
+
+            await saveData();
+            
+            document.getElementById('saveAlert').innerHTML = '<div class="alert alert-success">✓ Alterações salvas com sucesso!</div>';
+            setTimeout(() => {
+                document.getElementById('saveAlert').innerHTML = '';
+            }, 3000);
+        };
+
+        function attachPublicListeners() {
+            // Smooth scroll
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const target = document.querySelector(anchor.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({ behavior: 'smooth' });
+                    }
+                });
+            });
+        }
+
+        function attachLoginListeners() {
+            document.getElementById('loginForm').addEventListener('submit', (e) => {
+                e.preventDefault();
+                const password = document.getElementById('password').value;
+                if (password === 'admin123') {
+                    isLoggedIn = true;
+                    render();
+                } else {
+                    alert('Senha incorreta!');
+                }
+            });
+        }
+
+        function attachAdminListeners() {
+            // Listeners já anexados via onclick nos botões
+        }
+
+        // INICIALIZAR
+        (async () => {
+            await loadData();
+            render();
+        })();
+    </script>
+</body>
+</html>
